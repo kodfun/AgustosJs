@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablolar</title>
+</head>
+<body>
+    <h1>Türkiye</h1>
+
+    <!-- border attribute'u yerine css kullanılmalı, geçici yaptık -->
+    <table border="1">
+        <tr>
+            <th>Plaka</th>
+            <th>Şehir Adı</th>
+            <th>Neyiyle Meşhur?</th>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td>Adana</td>
+            <td><strong>Kebap</strong>, Sıcağı</td>
+        </tr>
+        <tr>
+            <th>16</th>
+            <td>Bursa</td>
+            <td>İskender, Uludağ</td>
+        </tr>
+        <tr>
+            <th>78</th>
+            <td>Karabük</td>
+            <td>Lokum</td>
+        </tr>
+    </table>
+
+    <h2>Filmler (thead, tbody)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Adı</th>
+                <th>Yılı</th>
+                <th>Türü</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>The Lord of the Rings: The Fellowship of the Ring</td>
+                <td>2001</td>
+                <td><em>macera</em>, dram</td>
+            </tr>
+            <tr>
+                <td>The Hobbit</td>
+                <td>2013</td>
+                <td>macera, fantezi</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Şehirler (rowspan, colspan)</h2>
+
+    <table border="1">
+        <tr>
+            <th>Plaka</th>
+            <th>Şehir Adı</th>
+            <th>Neyiyle Meşhur?</th>
+            <td rowspan="5">reklamlar</td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td>Adana</td>
+            <td>Kebap, Sıcağı</td>
+        </tr>
+        <tr>
+            <td>#</td>
+            <td colspan="2">---</td>
+        </tr>
+        <tr>
+            <th>16</th>
+            <td>Bursa</td>
+            <td>İskender, Uludağ</td>
+        </tr>
+        <tr>
+            <th>78</th>
+            <td>Karabük</td>
+            <td>Lokum</td>
+        </tr>
+    </table>
+
+</body>
+</html>
+
+<!-- 
+CTRL+SHIFT+P
+Emmet: Wrap with Abbreviation
+
+
+tr: table row
+td: table data
+th: table heading
+
+
+! [TAB]
+HTML DÖKÜMANI KISAYOLU
+
+-->
