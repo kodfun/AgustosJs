@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol!</title>
+    <!-- css konusu ileride işlenecek -->
+    <link rel="stylesheet" href="stil.css">
+</head>
+<body>
+    <h1>Kayıt</h1>
+
+    <form method="post" action="kayit.html">
+        <div>
+            <label for="txtAd">Ad</label>
+            <input id="txtAd" type="text" name="ad" required>
+        </div>
+        <div>
+            <label for="txtParola">Parola</label>
+            <input type="password" name="parola" id="txtParola" required minlength="6">
+        </div>
+        <div>
+            <label for="txtEmail">E-mail</label>
+            <input type="email" name="email" id="txtEmail" required placeholder="mail@example.com">
+        </div>
+        <div>
+            <label for="sehir">Şehir</label>
+            <select name="sehir" id="sehir" required>
+                <option value="">Seçiniz</option>
+                <option value="1">Adana</option>
+                <option value="6">Ankara</option>
+                <option value="34">İstanbul</option>
+                <option value="35">İzmir</option>
+            </select>
+        </div>
+        <div>
+            <label>
+                <input type="radio" name="cinsiyet" value="e">
+                Erkek
+            </label>
+            <label>
+                <input type="radio" name="cinsiyet" value="k">
+                Kadın
+            </label>
+        </div>
+        <div>
+            <label>
+                <input name="confirmed" value="true" type="checkbox" required> Açıklamaları okudum ve kabul ediyorum.
+            </label>
+        </div>
+
+
+        <button>Kaydol</button>
+    </form>
+</body>
+</html>
