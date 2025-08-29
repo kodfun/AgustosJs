@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selektörler</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Atma", system-ui;
+        }
+
+        h1 {
+            text-transform: uppercase;
+        }
+
+        .dikkat {
+            background-color: yellow;
+        }
+
+        #memleket {
+            color: green;
+        }
+
+        .tavsiye {
+            font-style: italic;
+        }
+
+        ol>li:first-child {
+            font-weight: bold;
+        }
+
+        /* 2n = even */
+        ul>li:nth-child(2n) {
+            background-color: lightgray;
+        }
+
+        /* 2n+1 odd */
+        ul>li:nth-child(2n+1) {
+            background-color: lightblue;
+        }
+
+        div p {
+            text-indent: 24px;
+        }
+
+        /* sınıfı buda olan divlere etki eder */
+        div.buda {
+            border: 3px solid black;
+        }
+
+        div>p:nth-child(2) {
+            background-color: pink;
+        }
+
+        div>p:nth-of-type(2) {
+            background-color: coral;
+        }
+
+        /* pseudo class */
+        ol>li:hover {
+            background-color: black;
+            color: white;
+        }
+
+        /* pseudo element */
+        ol>li::marker {
+            color: black;
+        }
+
+        /* bir başka sözde element örneği */
+        p::first-letter {
+            font-size: 200%;
+            font-weight: bold;
+        }
+
+        #pinokyo {
+            height: 40px;
+            width: 120px;
+            background-color: burlywood;
+            transition: all 1s;
+            border-radius: 0px 20px 20px 0px;
+        }
+
+        #pinokyo:hover {
+            width: 100%;
+            background-color: coral;
+        }
+
+        ol, ul {
+            border-left: 5px solid black;
+        }
+
+        /* title attribute'u içerenle li'leri seç */
+        li[title] {
+            color: red;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        /* tipi password olanları seçer */
+        input[type="password"] {
+            border: 2px solid red;
+        }
+
+        .deniz::after {
+            content: "🌊";
+        }
+
+        /* deniz sınıfına sahip olmayan ol içindeki li'lerin başına dağ emojisi koy */
+        ol>li:not(.deniz)::before {
+            content: "⛰️";
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <label for="ad">Kullanıcı Adı</label>
+        <input type="text" name="ad" id="ad">
+        <label for="parola">Şifre</label>
+        <input type="password" name="parola" id="parola">
+        <label><input type="checkbox"> Beni Hatırla</label>
+    </form>
+
+    <!-- div#pinokyo -->
+    <div id="pinokyo"></div>
+
+    <h1>Türkiye</h1>
+
+    <h2>En Kalabalık Şehirler</h2>
+    <!-- ol>li*7 -->
+    <ol>
+        <li class="deniz">İstanbul</li>
+        <li>Ankara</li>
+        <li class="deniz">İzmir</li>
+        <li id="memleket" class="deniz">Bursa</li>
+        <li class="deniz">Antalya</li>
+        <li class="deniz" title="Adana Merkez Patlıyor Herkes!">Adana</li>
+        <li>Konya</li>
+    </ol>
+
+    <h2>Zihnin Yolculuğuna Rehber Sözler</h2>
+    <ul>
+        <li>“Zihin her şeydir. Ne düşünürsen, o olursun.”</li>
+        <li>“Geçmişte takılı kalma, geleceği de hayal etme. Zihnini şu ana odakla.”</li>
+        <li>“Binlerce savaş kazanmış olsan bile, en büyük zafer kendini yenmektir.”</li>
+        <li>“Nefret, nefretle değil; ancak sevgiyle sona erer. Bu değişmeyen bir yasadır.”</li>
+        <li>“Beden sağlığı için yürüyüş neyse, ruh sağlığı için farkındalık odur.”</li>
+        <li>“Her sabah yeniden doğarız. Bugün ne yapacağın her şeyi belirler.”</li>
+    </ul>
+
+
+    <h2>İçindeki Gücü Uyandır</h2>
+    <p>Hayat, her anıyla bir <span class="dikkat">öğrenme fırsatı</span>dır. Zorluklar seni durdurmak için değil,
+        büyütmek için karşına
+        çıkar. Şimdi içinde bulunduğun an, <span class="dikkat tavsiye">geçmişin yükünü bırak</span>ıp yeni bir
+        başlangıç yapman için bir davet
+        olabilir. Nefes al, anda kal ve her adımını bilinçle at. Unutma, <span class="dikkat">gerçek güç</span> dışarıda
+        değil, içinde
+        saklı.</p>
+
+    <div class="buda">
+        <h2>Lorem, ipsum dolor.</h2>
+        <!-- p*3>lorem -->
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis dolores quisquam tempore reprehenderit
+            beatae eveniet magnam, non minima soluta consequuntur facere quasi ducimus cumque similique incidunt
+            deleniti perspiciatis quos voluptates.</p>
+        <p>Quod dignissimos laborum modi error voluptatem nulla? Libero modi laudantium, qui nobis ratione dolor
+            necessitatibus nisi blanditiis recusandae ad repellendus dignissimos voluptate minus quos facere ut tenetur
+            quibusdam ab facilis!</p>
+        <p>Adipisci aliquam sapiente libero inventore? At eos rem laudantium ab cum vitae. Dolore voluptatibus molestias
+            tenetur debitis est. Eligendi reiciendis quisquam repudiandae molestiae deserunt suscipit libero assumenda
+            fugit odit sapiente!</p>
+    </div>
+</body>
+
+</html>
