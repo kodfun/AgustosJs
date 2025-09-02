@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arkaplan</title>
+    <style>
+        body {
+            /* background-color: gray;
+            background-image: url(pikachu.png);
+            background-repeat: no-repeat;
+            background-position-x: right;
+            background-position-y: bottom;
+            background-attachment: fixed; */
+            background: gray url(pikachu.png) right bottom no-repeat fixed;
+            background-size: 200px;
+        }
+
+        #kutu {
+            width: 300px;
+            height: 300px;
+            background-color: white;
+            background-image: linear-gradient(to bottom right, cyan, magenta, yellow);
+        }
+
+        /* https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/repeating-linear-gradient */
+        #erkan {
+            width: 300px;
+            height: 300px;
+            background: repeating-linear-gradient(45deg, black, black 10px, white 10px, white 20px);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="kutu"></div>
+    <div id="erkan"></div>
+</body>
+</html>
