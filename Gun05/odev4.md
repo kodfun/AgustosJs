@@ -1,4 +1,4 @@
-W3Schools (https://www.w3schools.com/css) sitesi üzerinden aşağıdaki - CSS konularını okuyup “Try It Yourself” egzersizlerini yapınız. Gerekirse bu örnekleri Visual Studio Code ortamında, kendi HTML dosyalarınızda uygulayarak sonuçlarını kontrol ediniz:
+W3Schools (https://www.w3schools.com/css) sitesi üzerinden aşağıdaki CSS konularını okuyup “Try It Yourself” egzersizlerini yapınız. Gerekirse bu örnekleri Visual Studio Code ortamında, kendi HTML dosyalarınızda uygulayarak sonuçlarını kontrol ediniz:
 
 - CSS Margins
 - CSS Padding
