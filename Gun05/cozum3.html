@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ödev 3 – CSS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Kablammo&display=swap');
+
+        /* G1:
+     %100 genişlik ve 100px yükseklikli bir div için:
+     Flaticon’dan bulduğun bir ünlem görselini sağ alta, 32x32 boyutunda ve sabit olacak şekilde
+     arka plan olarak yerleştir. Arka plan rengi ise sarı tonunda olsun. */
+        #g1-kutu {
+            width: 100%;
+            height: 100px;
+            background: cornsilk url("warning.png") no-repeat right 10px bottom 10px;
+            background-size: 32px 32px;
+        }
+
+        /* G2:
+     Sayfa (body) arka planına en az üç renkli bir gradient uygula. */
+        h1 {
+            margin-top: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background-image: linear-gradient(45deg, red, yellow, green);
+            padding: 20px;
+            box-sizing: border-box;
+            background-attachment: fixed;
+        }
+
+        /* G3:
+     150x150 boyutunda bir daire oluştur ve içine 45° açılı, siyah/beyaz,
+     repeating-linear-gradient ile zebra desen ekle. Her şerit 15px. */
+        #g3-daire {
+            width: 150px;
+            height: 150px;
+            background: repeating-linear-gradient(45deg, #000 0, black 10px, rgb(255, 255, 255) 10px, #ffffff 20px);
+            border-radius: 50%;
+        }
+
+
+        /* G4:
+     Google Fonts’tan bir fontu @import ile ekle.
+     h1#baslik için font shorthand kullan: italic, bold, 64px, seçtiğin font ailesiyle. */
+        h1#baslik {
+            font: italic bold 64px "Kablammo", system-ui;
+        }
+
+        /* G5:
+     p.lead için font shorthand kullan: normal, 300 ağırlık, 18px/1.8 satır aralığı,
+     Google font ailesi. */
+        p.lead {
+            font: normal 300 18px "Google Sans Code", monospace;
+        }
+
+        /* G6:
+     #bilet için 8px kalınlığında double kenarlık ver.
+     Her kenarın rengi farklı olsun (border-color dört değer).
+     Boyut: 260x120px. Metni ortala. */
+        #bilet {
+            border-width: 8px;
+            border-style: double;
+            border-color: red green yellow blue;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 260px;
+            height: 120px;
+            text-align: center;
+            line-height: 120px;
+            /* geçici çözüm */
+        }
+
+        /* G7:
+     #rozet için 160x160 daire oluştur. Kalınca bir kenarlık ver.
+     İçine 96px boyutunda © sembolü yerleştir; satır yüksekliği 160px olsun.
+     Opaklığı opacity: 0.25 ile düşür. (sembol fontu olarak Impact benzeri hacimli font kullan.) */
+        #rozet {
+            border-radius: 50%;
+            width: 160px;
+            height: 160px;
+            border: 20px solid black;
+            text-align: center;
+            font: 900 96px/155px Impact, sans-serif;
+            opacity: .25;
+        }
+
+        /* G8:
+     .solak ile sola bakan dik üçgen oluştur (border tekniği).
+     .terslek ile tabanı yukarıda olan ikizkenar üçgen oluştur. */
+        .solak {
+            width: 100px;
+            height: 100px;
+            border: 50px solid transparent;
+            border-bottom-color: green;
+            border-right-color: green;
+            box-sizing: border-box;
+            margin: 20px 10px 5px 0px; /* üst sağ alt sol */
+        }
+
+        .terslek {
+            width: 100px;
+            height: 75px;
+            box-sizing: border-box;
+            border: 50px solid transparent;
+            border-top-color: blue;
+            border-top-width: 75px;
+            border-bottom-width: 0px;
+            margin-top: 20px;
+        }
+
+        /* G9:
+     İçeriği “Css” olan bir h2 ekle. CSS ile tümünü büyük harfe çevir.
+     Her harfi span ile ayır ve ilk harfi ön tanımlı bir css renk ismiyle, ikinciyi rgb(), üçüncüyü #hex ile renklendir. */
+     h2#renkli-baslik {
+        text-transform: uppercase;
+     }
+
+     h2#renkli-baslik>span:nth-child(1) {
+        color: darkgray;
+     }
+
+     h2#renkli-baslik>span:nth-child(2) {
+        color: rgb(112, 236, 40);
+     }
+
+     h2#renkli-baslik>span:nth-child(3) {
+        color: #ed1; /* #eedd11 */
+     }
+
+        /* G10:
+     #kart için genişlik 200px, yükseklik 100px ver.
+     20px padding ve 10px kenarlık eklediğinde dış boyut değişmesin (box-sizing ile çöz). */
+     #kart {
+        width: 200px;
+        height: 100px;
+        background-color: darkturquoise;
+        padding: 20px;
+        border: 10px dashed darkblue;
+        box-sizing: border-box;
+     }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 id="baslik">Başlık</h1>
+        <p class="lead">Kısa açıklama metni.</p>
+    </header>
+
+    <div id="g1-kutu">G1 Kutu</div>
+
+    <section id="g3-daire" aria-label="Zebra daire"></section>
+
+    <div id="bilet">BİLET</div>
+
+    <div id="rozet">©</div>
+
+    <div class="solak" aria-label="Sola bakan üçgen"></div>
+    <div class="terslek" aria-label="Tabanı yukarıda üçgen"></div>
+
+    <h2 id="renkli-baslik">
+        <span>C</span><span>s</span><span>s</span>
+    </h2>
+
+    <div id="kart">Kart</div>
+
+    <br><br><br><br><br><br>
+</body>
+
+</html>
