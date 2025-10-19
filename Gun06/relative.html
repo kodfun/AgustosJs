@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relative Position</title>
+    <style>
+        div {
+            background: black;
+            color: white;
+            width: 80px;
+            height: 80px;
+            border: 10px solid gray;
+        }
+        div:nth-child(even) {
+            border-color: red;
+        }
+        .ayrik {
+            position: relative;
+            top: 10px;
+            left: 10px;
+        }
+        .abidik {
+            transform: translate(10px, 10px);
+        }
+    </style>
+</head>
+<body>
+    <!-- div*10>{$} -->
+    <div>1</div>
+    <div class="ayrik">2</div>
+    <div>3</div>
+    <div>4</div>
+    <div class="abidik">5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+</body>
+</html>
