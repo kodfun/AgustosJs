@@ -1,0 +1,79 @@
+<!-- https://www.w3schools.com/css/css_website_layout.asp -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float ile 3 Sütunlu Yerleşim</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        header, nav, main>div, footer {
+            background-color: #eee;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        header {
+            padding: 30px 0;
+        }
+
+        nav {
+            padding: 15px 0;
+        }
+
+        main>div {
+            padding: 90px 0;
+            float: left;
+        }
+
+        main::after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+
+        .sol {
+            width: 15%;
+        }
+
+        .orta {
+            width: calc(70% - 24px);
+            margin: 0 12px 12px 12px;
+        }
+
+        .sag {
+            width: 15%;
+        }
+
+        footer {
+            padding: 20px 0;
+        }
+
+        /* RESPONSIVE KURAL */
+        @media screen and (max-width: 600px) {
+            main>div {
+                float: none;
+            }
+
+            .sol, .orta, .sag {
+                width: 100%;
+                margin: 0 0 12px 0;
+            }
+        }
+    </style>
+ </head>
+ <body>
+    <header>Header</header>
+    <nav>Navigation Menu</nav>
+    <main>
+        <div class="sol">Left</div>
+        <div class="orta">Main Content</div>
+        <div class="sag">Right</div>
+        <!-- float'u tam bu noktada temizle -->
+    </main>
+    <footer>Footer</footer>
+ </body>
+ </html>
