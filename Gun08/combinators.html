@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Combinators</title>
+    <style>
+        /* divin sınırları içindeki paragrafları koyu yap (Descendant combinator (space)) */
+        div p {
+            font-weight: bold;
+        }
+
+        /* divin doğrudan çocuğu olan paragrafların altını çiz (Child combinator (>)) */
+        div>p {
+            text-decoration: underline;
+        }
+
+        /* .mara sınıfına sahip elementten sonra gelen liste öğesini kardeşini kırmızı yap (Next sibling combinator (+)) */
+        .mara+li {
+            color: red;
+        }
+
+        /* .mara sınıfına sahip elementten sonra gelen tüm liste öğesi olan kardeşlerinin background'ını sarı yap (Subsequent-sibling combinator (~)) */
+        .mara~li {
+            background-color: yellow;
+        }
+
+        /* ol listesinin ilk öğesinden sonra gelen tüm kardeşlerini italic yap */
+        /* yöntem 1 */
+        /* ol>li:nth-child(1)~li {
+            font-style: italic;
+        } */
+
+        /* yöntem 2 */
+        /* ol>li:nth-child(n+2) {
+            color: red;
+        } */
+
+        /* yöntem 3 */
+        ol>:first-child~li {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- ol>li*6>lorem3 -->
+    <ol>
+        <li>Lorem, ipsum dolor.</li>
+        <li>Consectetur, animi laborum.</li>
+        <li>Nesciunt, natus maiores.</li>
+        <li>Illum, distinctio impedit?</li>
+        <li>Repellendus, asperiores commodi.</li>
+        <li>Excepturi, esse voluptatem.</li>
+    </ol>
+
+    <ul>
+        <li>messi</li>
+        <li>ronaldo</li>
+        <li class="mara">maradona</li>
+        <li>ronaldinho</li>
+        <li>icardi</li>
+    </ul>
+
+    <div>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit, cumque.</p>
+        
+        <section>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </section>
+    </div>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis qui tenetur molestias!</p>
+</body>
+</html>
