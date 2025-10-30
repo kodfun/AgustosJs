@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Units - Ölçü Birimleri</title>
+    <style>
+        html {
+            font-size: 15px;
+            margin: 100px;
+        }
+
+        #ornek1 {
+            background-color: green;
+            width: 32px;
+            height: 32px;
+        }
+
+        #ornek2 {
+            /* 1rem = HTML elementine verilmiş font boyutu */
+            background-color: red;
+            width: 2rem;
+            height: 2rem;
+        }
+
+        #ornek3 {
+            /* 1em = HTML elementine parentinden gelen font boyutu */
+            background-color: orange;
+            width: 2em;
+            height: 2em;
+        }
+
+        #ornek4 {
+            /* yüzde ölçü birimi parent element değerlerini baz alır */
+            background-color: purple;
+            color: white;
+            width: 50%;
+            height: 20px;
+        }
+
+        /* ÖZET: 1rem doğrudan doğruya HTML kök elementinin font boyutuna eş değerdir. 
+        1em ya da 100% ise parent elementin boyutuna eş değerdir.*/
+    </style>
+</head>
+
+<body>
+    <h3>pixel (32X32 bir kare)</h3>
+    <div id="ornek1"></div>
+    <h3>rem (2remX2rem bir kare)</h3>
+    <div id="ornek2"></div>
+    <section style="font-size: 10px">
+        <h3>em (2emX2em bir kare)</h3>
+        <div id="ornek3"></div>
+    </section>
+    <h3>% (50%x20px)</h3>
+    <div id="ornek4">örnek 4</div>
+</body>
+
+</html>
