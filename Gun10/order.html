@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Order</title>
+    <style>
+        .kutu {
+            background-color: aqua;
+            padding: 1rem;
+            display: flex;
+            height: 200px;
+            align-items: stretch; /* default */
+        }
+
+        .kutu>div {
+            background-color: pink;
+            margin: 0.5rem;
+            padding: 1rem;
+        }
+
+        /* c'yi en sona at */
+        .c {
+            order: 1;
+        }
+
+        /* e'yi en başa at */
+        .e {
+            order: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="kutu">
+        <div>A</div>
+        <div class="b">B</div>
+        <div class="c">C</div>
+        <div>D</div>
+        <div class="e">E</div>
+    </div>
+</body>
+</html>

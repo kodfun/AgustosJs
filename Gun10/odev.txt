@@ -1,0 +1,8 @@
+ÖDEV 1: 
+Gun 7'deki float3sutun.html görünümü flex kullanarak oluştur
+
+ÖDEV 2: 
+https://flexboxfroggy.com/ 
+baştan başlayarak tüm levelleri bitir,
+olur da görmediğimiz konu olursa onları çalışarak yap
+(yapamadıklarına bakacağız)

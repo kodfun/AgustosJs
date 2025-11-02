@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mükemmel Ortalama</title>
+    <style>
+        /* GÖREV 1: ,
+        A. alan tüm pencereyi kaplasın ve her şeyin üstünde olsun (position: relative)
+        B. arkaplan rengi transparan siyah olsun
+        C. alan kutusuna öyle bir css yaz ki çocukları tam ortada toplansın ve hizalansın */
+        .alan {
+            background-color: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0; right: 0; bottom: 0; left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+
+        /* GÖREV 2:
+        A. kareyi 100x100 boyutlarında 45 derece döndürülmüş (rotate) bir kare yap
+        B. arkaplan rengi beyaz olsun */
+        .kare {
+            width: 100px;
+            height: 100px;
+            transform: rotate(45deg);
+            background-color: white;
+        }
+
+        /* GÖREV 3: kare dönsün */
+        @keyframes donsun {
+            0% {
+                transform: rotate(45deg);
+            }
+
+            100% {
+                transform: rotate(135deg);
+            }
+        }
+
+        .kare {
+            animation: donsun 2s cubic-bezier(0.7, 0, 0.3, 1) infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="alan">
+        <div class="kare"></div>
+    </div>
+
+    <!-- 10 paragraf -->
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora, voluptas esse tempore deserunt asperiores
+        voluptatem veniam, molestias dignissimos non, facere quidem libero ullam. Qui fugiat suscipit veritatis quod
+        fugit. Adipisci!</p>
+    <p>Temporibus, quo, autem cupiditate quaerat natus recusandae molestiae asperiores perferendis nesciunt saepe eaque
+        laboriosam assumenda, dignissimos in velit officia. Obcaecati necessitatibus quaerat cumque? Omnis quaerat
+        placeat sint, cupiditate error nobis.</p>
+    <p>Voluptas et voluptate facere consequuntur laboriosam blanditiis ducimus rem itaque ex, odio tempore suscipit
+        sequi amet voluptatibus incidunt! Non, sed! Sequi ipsa vero dicta? Id dolorum eligendi sed ad tempore.</p>
+    <p>Tempore consectetur quis natus doloremque accusantium molestias ab ullam dicta sit amet, vero consequuntur,
+        dolorum nam perspiciatis eius ipsam! Ab id libero nostrum soluta perspiciatis ipsam iste neque esse in!</p>
+    <p>Neque sed amet molestiae, mollitia doloribus blanditiis repudiandae repellendus unde quia reiciendis,
+        consequuntur laborum quo vitae iusto facere eligendi quis maiores minima voluptatem aperiam velit doloremque.
+        Corporis, fuga. Ipsa, quaerat!</p>
+    <p>Illum omnis recusandae officiis accusamus fugiat, earum ex voluptatem. Ducimus dolorem voluptatibus commodi
+        blanditiis sequi ullam corporis nulla mollitia? Quod, necessitatibus facere delectus a amet eligendi nam optio
+        magnam tempore.</p>
+    <p>Laboriosam saepe eum quod enim recusandae! Ullam nobis corporis at pariatur eaque! A voluptas nesciunt optio
+        animi facere tenetur beatae placeat ea odio eius aliquam, minima voluptate id sunt ullam.</p>
+    <p>Officiis tenetur sit explicabo et beatae quas asperiores, magni laboriosam itaque aliquam. Aut impedit quisquam
+        consectetur non quia magni, quod, ipsum dignissimos voluptates excepturi repudiandae dolorum voluptatem aliquid
+        possimus. Numquam.</p>
+    <p>Debitis eveniet non excepturi impedit, quam, illo nobis et necessitatibus natus nam, distinctio dolorem corporis
+        molestiae voluptas sapiente. Suscipit consequatur facere facilis culpa aliquid ratione doloribus magnam quaerat
+        deserunt laborum?</p>
+    <p>Accusantium similique, perferendis non, tempora, aut alias ipsa facere nesciunt illum vitae libero eligendi
+        architecto minima maxime. At libero illum esse quasi voluptatum fuga! Explicabo eaque tempore aut corrupti
+        voluptatum.</p>
+</body>
+
+</html>

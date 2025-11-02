@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Üç Sütun (Orta Geniş)</title>
+    <style>
+        .kutu {
+            border: 5px solid green;
+            display: flex;
+            gap: 1rem;
+            height: 200px;
+        }
+
+        /* sınıfı sut ile başlayanlar */
+        [class^="sut"] {
+            background-color: pink;
+            /* height: 33px; */
+            /* margin: .5rem; */
+        }
+
+        .sut1 {
+            flex: 1;
+        }
+
+        .sut2 {
+            flex: 3;
+        }
+
+        .sut3 {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- div.kutu>div.sut$*3 -->
+     <div class="kutu">
+        <div class="sut1">SÜTUN 1</div>
+        <div class="sut2">SÜTUN 2</div>
+        <div class="sut3">SÜTUN 3</div>
+     </div>
+</body>
+</html>
