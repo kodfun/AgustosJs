@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Quicksand", sans-serif;
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-bottom: 1rem;
+}
+
+.header-title {
+    font-size: 2.5rem;
+    margin: 0 0 1rem 0;
+}
+
+.dmark {
+    background-color: black;
+    color: white;
+    padding: 0 .5rem;
+}
+
+main {
+    display: flex;
+    gap: 1rem;
+    max-width: 1400px;
+    margin: 0 auto 3rem auto;
+    padding: 0 1rem;
+}
+
+.posts {
+    flex: 2;
+}
+
+.sidebar {
+    flex: 1;
+    background-color: cyan;
+}
+
+footer {
+    background-color: #616161;
+    color: white;
+    padding: 1.5rem 1rem 2.5rem 1rem;
+}
+
+.pagination {
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: black;
+    padding: .75rem 1.5rem;
+    color: white;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #ccc;
+    color: black;
+}
+
+.btn.disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.post {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.post-image {
+    width: 100%;
+}
+
+.post-body {
+    padding: 1rem;
+}
+
+.post-title {
+    margin: 0 0 .5rem 0;
+}
+
+.post-desc {
+    font-size: 1.2em;
+}
+
+.post-date {
+    color: gray;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.read-more {
+    border: 1px solid #ccc;
+    padding: .8rem 1.6rem;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+.read-more:hover {
+    background-color: #ccc;
+}
+
+.post-comments {
+    font-weight: 500;
+    margin-right: 1rem;
+}
+
+.post-comment-count {
+    margin-left: .4rem;
+}
