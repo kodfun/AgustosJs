@@ -26,7 +26,7 @@ header {
 
 main {
     display: flex;
-    gap: 1rem;
+    gap: 1.8rem;
     max-width: 1400px;
     margin: 0 auto 3rem auto;
     padding: 0 1rem;
@@ -38,7 +38,6 @@ main {
 
 .sidebar {
     flex: 1;
-    background-color: cyan;
 }
 
 footer {
@@ -71,6 +70,7 @@ footer {
 
 .post {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 2rem;
 }
 
 .post-image {
@@ -118,4 +118,91 @@ footer {
 
 .post-comment-count {
     margin-left: .4rem;
+}
+
+.post-comment-oval {
+    border-radius: 50%;
+    padding: .1rem .5rem;
+}
+
+.widget {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 2rem;
+}
+
+.widget-title {
+    font-size: 1.3em;
+    font-weight: 500;
+    margin-bottom: .6rem;
+}
+
+.widget-image {
+    width: 100%;
+    display: block;
+}
+
+.widget-body {
+    padding: 1rem;
+}
+
+.widget-header {
+    background-color: #f1f1f1;
+    font-size: 1.4em;
+    padding: 1rem;
+}
+
+ul.popular-posts {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+li.popular-post {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+li.popular-post:nth-last-child(1) {
+    border: none;
+}
+
+li.popular-post:hover {
+    background-color: #ccc;
+}
+
+.popular-post-image {
+    width: 50px;
+    float: left;
+    margin-right: 1rem;
+}
+
+.popular-post-title {
+    font-size: 1.2em;
+}
+
+.tag {
+    background-color: #f1f1f1;
+    padding: 0 .5rem;
+}
+
+.tags {
+    line-height: 2;
+}
+
+.tag.selected {
+    background-color: black;
+    color: white;
+    font-size: 1.2em;
+}
+
+@media screen and (max-width: 991px)
+{
+    main {
+        flex-direction: column;
+    }
+
+    .popular-post:nth-child(n+4) {
+        display: none;
+    }
 }
