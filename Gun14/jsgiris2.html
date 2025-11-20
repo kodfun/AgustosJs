@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Giriş Görev</title>
+</head>
+<body>
+    <p id="ali">Ali eşeğe bak!</p>
+
+    <!-- butona tıklandığında paragraf kaybolsun-->
+    <button onclick="document.getElementById('ali').style.display = 'none'">Bana Tıkla</button>
+
+    <script>
+        // id'si ali olan elementin background rengini sarı yap
+        let ali = document.getElementById("ali");
+        ali.style.backgroundColor = "yellow";
+
+        // paragrafın içeriğini "Ali ata bak!" şeklinde değiştir
+        ali.textContent = "Ali ata bak!";
+    </script>
+</body>
+</html>
+
+<!-- ****.style.display = "none" -->

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayaç</title>
+</head>
+<body>
+    <button id="sayi">100</button>
+
+    <!-- butona tıklndıkça değeri 1 artsın -->
+    <script>
+        let btn = document.getElementById("sayi");
+
+        btn.onclick = function() {
+            btn.textContent = Number(btn.textContent) + 1;
+        };
+    </script>
+</body>
+</html>

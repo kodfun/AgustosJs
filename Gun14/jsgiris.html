@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript'e Giriş</title>
+    <style>
+        #hedef {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ana Başlık</h1>
+    <p id="hedef">Ben bir paragrafım ve benim rengim CSS aracılığıyla önce kırmızı olacaktır. Ve sonrasında
+        çalıştıracağımız bir JavaScript koduyla maviye dönüşecektir.</p>
+    <p title="Bir örnek açıklama">Olaylardan haberi olmayan başka bir paragrafı da buraya koyalım. Bu paragrafa belirli
+        bir renk vermek istemiyoruz.</p>
+
+    <!-- js kodu inline olarak elementin event attribute'larına yazılabilir -->
+    <button id="goster" 
+        onclick="document.getElementById('goster').textContent = 'Şanslı Sayım => 3'">
+        Şanslı Sayımı Görmek İçin Tıkla
+    </button>
+
+    <script>
+        var hede = document.getElementById("hedef");
+        hede.style.color = "blue";
+    </script>
+</body>
+
+</html>
