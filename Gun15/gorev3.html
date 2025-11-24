@@ -1,0 +1,34 @@
+<!-- bir sayı kutusu koy, kullanıcı buradaki sayıyı değiştircikçe
+ o sayı oranınca bir dikdörtgen çubuğun boyunu değiştir -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Görev 3</title>
+    <style>
+        #dikdortgen {
+            width: 100px;
+            height: 20px;
+            background-color: orange;
+            margin-top: 1rem;
+            transition: all 1s;
+        }
+    </style>
+ </head>
+ <body>
+    Genişlik <input type="number" id="gen" value="100">
+
+    <div id="dikdortgen"></div>
+
+    <script>
+        let txtGen = document.getElementById("gen");
+        let cubuk = document.getElementById("dikdortgen");
+
+        txtGen.oninput = function() {
+            cubuk.style.width = txtGen.value + "px";
+        };
+
+    </script>
+ </body>
+ </html>

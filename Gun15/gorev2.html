@@ -1,0 +1,26 @@
+<!-- 
+    bir metin kutusu koy, kullanıcı oraya renk adı ya da kodu girsin
+    kullanıcının verdiği rengi sayfanın arka plan rengi yap
+  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Görev 2</title>
+</head>
+<body>
+    <label for="renk">Renk Kodu</label>
+    <input type="text" id="renk">
+    <button id="goster">Göster</button>
+
+    <script>
+        let txtRenk = document.getElementById("renk");
+        let btnGoster = document.getElementById("goster");
+
+        btnGoster.onclick = function() {
+            document.body.style.backgroundColor = txtRenk.value;
+        };
+    </script>
+</body>
+</html>

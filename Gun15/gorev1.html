@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Görev 1</title>
+</head>
+<body>
+    <label for="metin">Mesajınız:</label><br>
+    <textarea id="metin" cols="40" rows="6"></textarea><br>
+    Karakter Sayısı: 
+    <input id="ksay" type="text" size="4" readonly value="0">
+
+    <script>
+        let txt = document.getElementById("metin");
+
+        function say() {
+            let inp = document.getElementById("ksay");
+            let uz = txt.value.length;
+            inp.value = uz;
+        }
+
+        // txt.oninput = say;
+        txt.addEventListener("input", say);
+    </script>
+</body>
+</html>

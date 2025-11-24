@@ -1,0 +1,8 @@
+
+
+görev 3teki gibi girilen değere göre bir dikdörtgenin anlık olarak genişlik ve yüksekliğini belirleyecek.
+
+Ama bu sefer sayı kutularını değil range kontrolünü kullan.
+
+bilgi için
+https://www.w3schools.com/tags/att_input_type_range.asp
