@@ -1,0 +1,42 @@
+<!-- 
+    * 2 adet input number ile kullanıcıdan 
+      bir dikdörtgenin genişliği ve yüksekliği alınacak 
+      
+    * bu değerler değiştikçe bu değerlere uygun olarak
+      dikdörtgenin boyutları (width/height) güncellenecek
+
+    * bu görevde css ile fazla iyileştirme yapmana gerek yok
+      <br> veya <hr> kullanabilirsin düzen için
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dikdörtgen 2</title>
+    <style>
+        #dikdortgen {
+            width: 200px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    Genişlik <input type="number" id="gen" value="200">
+    Yükseklik <input type="number" id="yuk" value="100">
+    <hr>
+    <div id="dikdortgen" style="background-color: red;"></div>
+
+    <script>
+        const inpGen = document.getElementById("gen");
+        const inpYuk = document.getElementById("yuk");
+        const divDik = document.getElementById("dikdortgen");
+
+        const guncelle = inpGen.oninput = inpYuk.oninput = function() {
+            divDik.style.width = inpGen.value + "px";
+            divDik.style.height = inpYuk.value + "px";
+        };
+
+        guncelle();
+    </script>
+</body>
+</html>

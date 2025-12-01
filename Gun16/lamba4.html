@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lamba</title>
+</head>
+<body>
+    <img id="lamba" src="img/off.png" alt="lamba">
+    <br>
+    <small>(Lambayı açıp kapamak için lambaya dokunun.)</small>
+
+    <script>
+        const lamba = document.getElementById("lamba");
+        lamba.addEventListener("click", ackapa);
+
+        let acikMi = false;
+        
+        function ackapa() {
+            lamba.src = "img/" + (acikMi ? "off" : "on") + ".png";
+            acikMi = !acikMi;
+        }
+    </script>
+</body>
+</html>
+
+<!-- let x = kosul ? dogruysa : yanlissa; -->

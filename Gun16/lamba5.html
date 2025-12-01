@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lamba</title>
+</head>
+<body>
+    <img id="lamba" src="img/off.png" alt="lamba">
+    <br>
+    <small>(Lambayı açıp kapamak için lambaya dokunun.)</small>
+
+    <script>
+        const lamba = document.getElementById("lamba");
+        
+        let acik = false;
+
+        lamba.onclick = function() { 
+            let durum = acik ? "off" : "on";
+            lamba.src = `img/${durum}.png`;
+            acik = !acik;
+         };
+    </script>
+</body>
+</html>
+
+<!-- let x = kosul ? dogruysa : yanlissa; -->
+
+<!-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals -->

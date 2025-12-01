@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lamba</title>
+</head>
+<body>
+    <img id="lamba" src="img/off.png" alt="lamba">
+    <hr>
+    <button onclick="lambaAc()">Aç</button>
+    <button onclick="lambaKapa()">Kapa</button>
+
+    <script>
+        // 1. img'yi bir değişkene aktar
+        const lamba = document.getElementById("lamba");
+
+        // 2. lambaAc fonksiyonu tanımla ve bu fonk.
+        //      resmi güncellesin (on.png)
+        function lambaAc() {
+            lamba.src = "img/on.png";
+        }
+
+        // 3. lambaKapa fonksiyonu tanımla ve bu fonk.
+        //      resmi güncellesin (off.png)
+        function lambaKapa() {
+            lamba.src = "img/off.png";
+        }
+    </script>
+    
+</body>
+</html>

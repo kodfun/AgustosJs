@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dikdörtgen</title>
+    <style>
+        .duzen {
+            display: flex;
+            margin-bottom: 1rem;
+            max-width: 600px;
+        }
+
+        .duzen>label {
+            width: 80px;
+        }
+
+        .duzen>input {
+            flex: 1;
+        }
+
+        #dikdortgen {
+            width: 250px;
+            height: 250px;
+            background-color: yellowgreen;
+            border: 6px solid orangered;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 2em;
+            color: white;
+            text-shadow: 1px 1px black;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="duzen">
+        <label for="gen">Genişlik</label>
+        <input type="range" name="gen" id="gen" min="0" max="500" value="250">
+    </div>
+    <div class="duzen">
+        <label for="yuk">Yükseklik</label>
+        <input type="range" name="yuk" id="yuk" min="0" max="500" value="250">
+    </div>
+
+    <div id="dikdortgen"></div>
+
+    <script>
+        const inputGen = document.getElementById("gen");
+        const inputYuk = document.getElementById("yuk");
+        const divDik = document.getElementById("dikdortgen");
+
+        function guncelle() {
+            divDik.style.width = inputGen.value + "px";
+            divDik.style.height = inputYuk.value + "px";
+            divDik.textContent = inputGen.value + "x" + inputYuk.value;
+        }
+
+        inputGen.oninput = guncelle;
+        inputYuk.oninput = guncelle;
+
+        guncelle();
+    </script>
+</body>
+</html>

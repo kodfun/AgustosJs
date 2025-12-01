@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lamba</title>
+</head>
+<body>
+    <img id="lamba" src="img/off.png" alt="lamba">
+    <br>
+    <small>(Lambayı açıp kapamak için lambaya dokunun.)</small>
+
+    <script>
+        const lamba = document.getElementById("lamba");
+        lamba.addEventListener("click", ackapa);
+
+        function ackapa() {
+            if (lamba.getAttribute("src") == "img/on.png")
+                lamba.setAttribute("src", "img/off.png");
+            else
+                lamba.setAttribute("src", "img/on.png");
+        }
+    </script>
+</body>
+</html>

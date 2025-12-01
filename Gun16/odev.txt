@@ -1,0 +1,3 @@
+red green blue input range
+3 değer değiştikçe bir kare kutunun rengini güncelle
+rgb(R, G, B) renk fonksiyonu kullanılacak
