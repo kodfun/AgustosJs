@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <form action="deneme.php" id="frmKayit">
+        <div>
+            <label for="ad">Adınız</label>
+            <input type="text" name="ad" id="ad" required>
+        </div>
+
+        <div>
+            <label for="yas">Yaşınız</label>
+            <input type="number" name="yas" id="yas" min="18" required>
+        </div>
+
+        <button>Kayıt Ol</button>
+    </form>
+
+    <div id="bilgi"></div>
+
+    <script>
+        const frm = document.getElementById("frmKayit");
+
+        frm.onsubmit = function(event) {
+            event.preventDefault(); // formu teslim etme!!!
+            let ad = document.getElementById("ad").value;
+            let yas = document.getElementById("yas").value;
+            let divBilgi = document.getElementById("bilgi");
+            divBilgi.textContent = `Merhaba ${ad} (${yas})! Kaydınız alınmıştır`;            
+        };
+    </script>
+</body>
+</html>
