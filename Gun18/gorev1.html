@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Görev 1</title>
+</head>
+<body>
+    <label for="metin">Metniniz</label><br>
+    <textarea name="metin" id="metin" rows="4" cols="40"></textarea>
+    <hr>
+    <div id="uzunluk">Girdiğiniz metin <span id="uz">0</span> karakterden oluşmaktadır.</div>
+
+    <div>
+        <input type="text" id="ara"> 
+        <span id="araSonuc">İçerir</span>
+        <!-- ÖDEV: aranan ifade metinde varsa yeşil renkte İçerir yazsın
+         yoksa kırmızı renkte İçermez yazsın -->
+    </div>
+
+    <script>
+        const txt = document.getElementById("metin");
+        const uz = document.getElementById("uz");
+
+        function karakterSay() {
+            uz.textContent = txt.value.length;
+        }
+
+        txt.addEventListener("input", karakterSay);
+
+    </script>
+</body>
+</html>
