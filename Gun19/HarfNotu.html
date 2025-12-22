@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harf Notu</title>
+</head>
+
+<body>
+    <h1>Harf Notu Uygulaması</h1>
+    <p>Bu program 0-100 aralığında girdiğiniz sınav puanının harf notu karşılığını size verir.</p>
+
+    <form id="frmHarfNot" action="deneme.html">
+        <label for="puan">Puan</label>
+        <input type="number" id="puan" required min="0" max="100">
+        <button>Hesapla</button>
+    </form>
+
+    <div id="sonuc">?</div>
+
+    <script>
+        const frm = document.getElementById("frmHarfNot");
+        const inp = document.getElementById("puan");
+        const divSonuc = document.getElementById("sonuc");
+
+        // formda input eventi tetiklenirse function'ı çalıştır
+        frm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            divSonuc.textContent = "ÇALIŞTI";
+            let harf = "";
+            let puan = inp.value;
+
+            if (puan >= 90)
+                harf = "A";
+            else if (puan >= 80)
+                harf = "B";
+            else if (puan >= 70)
+                harf = "C";
+            else if (puan >= 45)
+                harf = "D";
+            else
+                harf = "F";
+
+            // EKSTRA: F DURUMUNDA HARF KIRMIZI GÖRÜNSÜN, DEĞİLSE YEŞİL GÖRÜNSÜN
+            // if (harf == "F")
+            //     divSonuc.style.color = "red";
+            // else
+            //     divSonuc.style.color = "green";
+
+            divSonuc.style.color = harf == "F" ? "red" : "green";
+        });
+
+
+    </script>
+</body>
+
+</html>
+<!-- 
+>=90 A
+>=80 B
+>=70 C
+>=45 D
+ELSE F
+-->

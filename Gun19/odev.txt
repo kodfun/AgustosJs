@@ -1,0 +1,4 @@
+Kullanıcı sayı kutusuna bir ay numarası yazacak, sen de o ayın kaç günden oluştuğunu ona söyleyeceksin.
+Eğer geçersiz bir ay numarası girerse (13 gibi) o zaman geçersiz seçim yaptığını ileteceksin.
+
+Bu görevi önce if-else kullanarak sonra da switch kullanarak yapınız.

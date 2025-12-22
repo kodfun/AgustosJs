@@ -1,0 +1,36 @@
+<!-- Kullanıcıdan bir sayı kutusuyla sayı alın ve ekrana aşağıdaki formatta sonucu yazdırın:
+
+Örnek 1:
+15 sayısı bir tek sayıdır.
+
+Örnek 2:
+16 sayısı bir çift sayıdır.
+
+Kullanıcı sayıyı girer girmez herhangi bir butona basmadan sonuç istenen formatta ekrana yansısın.
+
+SÜRE: 5DK
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tek/Çift Hesaplama</title>
+</head>
+<body>
+    <label for="sayi">Sayı</label>
+    <input type="number" id="sayi">
+    <div id="sonuc"></div>
+
+    <script>
+        const inpSayi = document.getElementById("sayi");
+        const divSonuc = document.getElementById("sonuc");
+
+        inpSayi.oninput = function() {
+            let sayi = inpSayi.value;
+            let sonuc = sayi % 2 == 0 ? "çift" : "tek";  
+            divSonuc.textContent = `${sayi} sayısı bir ${sonuc} sayıdır.`;
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karar Yapıları</title>
+    <style>
+        body {
+            font-size: 3em;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        let sayi = 22;
+
+        if (sayi % 2 == 0)
+            document.write("çift");
+        else 
+            document.write("tek");
+
+        document.write("<hr>")
+
+        let sonuc = sayi % 2 == 0 ? "ÇİFT" : "TEK";
+        document.write(sonuc);
+
+        document.write("<hr>");
+
+        let suAnkiSaniye = new Date().getSeconds();
+        if (suAnkiSaniye % 5 == 0) {
+            let h1 = document.createElement("h1");
+            h1.textContent = "Tebrikler! Kazandınız..";
+            h1.style.background = "black";
+            h1.style.color = "white";
+            h1.style.textAlign = "center";
+            h1.style.padding = "1rem";
+            document.body.prepend(h1);
+        }
+    </script>
+
+    
+
+</body>
+</html>

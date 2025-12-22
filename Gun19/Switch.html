@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fal Bakıcı</title>
+</head>
+<body>
+    <h1>Fal Bakıcı</h1>
+    <p>Kullanıcının doğduğu günü baz alarak ona bir gizemli söz söyler..</p>
+
+    <label for="gun">Doğduğunuz gün</label>
+    <select id="gun">
+        <option value="1">Pazartesi</option>
+        <option value="2">Salı</option>
+        <option value="3">Çarşamba</option>
+        <option value="4">Perşembe</option>
+        <option value="5">Cuma</option>
+        <option value="6">Cumartesi</option>
+        <option value="7">Pazar</option>
+    </select>
+
+    <button id="bak">Falıma Bak</button>
+
+    <hr>
+
+    <div id="sonuc"></div>
+
+    <script>
+        const sel = document.getElementById("gun");
+        const btn = document.getElementById("bak");
+        const div = document.getElementById("sonuc");
+
+        function falBak() {
+            let secim = Number(sel.value);
+            let soz;
+
+            switch(secim) {
+                case 1:
+                    soz = "Başladığın şey sandığından daha güçlü bir kapı açıyor; sabırlı ol, işaretler yakında netleşecek.";
+                    break;
+                case 2:
+                    soz = "Cesaretin bir kelimeye bağlı; bugün söylemediğin şey kaderini bekletiyor.";
+                    break;
+                case 3:
+                    soz = "İki yol var ve ikisi de doğru; sezgin hangisini fısıldıyorsa orası senin pusulan.";
+                    break;
+                case 4:
+                    soz = "Gizli bir destek sen fark etmeden arkanda; minik bir adım büyük bir dengeyi değiştirir.";
+                    break;
+                case 5:
+                    soz = "Kalbin hafifliyor; geçmişten kalan bir düğüm sessizce çözülüyor.";
+                    break;
+                case 6:
+                    soz = "Şans gürültü yapmaz; küçük bir tesadüf sana beklediğin cevabı getirir.";
+                    break;
+                case 7:
+                    soz = "Dinlenirken gerçek yüzünü görürsün; sükûnet içinde bir sır açığa çıkacak.";
+                    break;
+                default:
+                    soz = "Geçersiz bir seçim yaptınız!";
+            }
+
+
+            div.textContent = soz;
+        }
+
+        btn.addEventListener("click", falBak);
+    </script>
+</body>
+</html>
