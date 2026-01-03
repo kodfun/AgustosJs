@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonksiyon Görevleri</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        arkaplanRengiVer("gray");
+        gradient("cyan", "magenta", 45);
+
+        // renk ismini alan ve o rengi sayfanı arka planı yapan fonksiyonu yaz
+        // örnek kullanım: arkaplanRengiVer("red"); çalıştığı an sayfa 
+        // arka planı kırmızıya dönmeli (5dk)
+        function arkaplanRengiVer(renk) {
+            document.body.style.backgroundColor = renk;
+        }
+
+        // bonus: 2 renk ve bir açı değeri verildiğinde sayfa arka planını
+        // gradient renk geçişi yapan fonksiyonu yaz
+        // ör: gradient("cyan", "magenta", 45);
+        function gradient(renk1, renk2, aci) {
+            document.body.style.backgroundImage =
+                `linear-gradient(${aci}deg, ${renk1}, ${renk2})`;
+        }
+    </script>
+</body>
+</html>

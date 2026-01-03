@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonksiyonlar</title>
+    <style>
+        textarea {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="txt" rows="10" cols="20"></textarea>
+    
+    <script>
+        const txt = document.getElementById("txt");
+        let sonuc = f(3);
+        txt.value = txt.value + sonuc + "\n";
+        txt.value += f(33) + "\n";
+
+        txt.value += saat() + "\n";
+        ayracKoy();
+
+        yaz(2026);
+
+        ayracKoy();
+
+        // parametre almayan değer döndürmeyen
+        function ayracKoy() {
+            yaz("/\\/\\/\\/\\/\\/\\/\\/\\/\\");
+        }
+
+        // parametre alan değer döndürmeyen
+        function yaz(metin) {
+            txt.value += metin + "\n";
+        }
+
+        // parametre almayan değer döndüren
+        function saat() {
+            const tarih = new Date();
+            return tarih.toLocaleTimeString("tr");
+        }
+
+        // parametre alan ve değer döndüren
+        function f(x) {
+            return x + 1;
+        }
+    </script>
+</body>
+</html>
