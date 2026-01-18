@@ -1,0 +1,22 @@
+2sa
+
+js non-mutating array methods:
+1. map() - Her elemanı dönüştürüp yeni dizi döner
+2. filter() - Koşula uyan elemanları filtreler
+3. slice() - Dizinin bir kısmını kopyalar
+4. concat() - Dizileri birleştirir
+5. join() - Diziyi string'e çevirir
+6. forEach() - Her eleman için işlem yapar (dizi döndürmez)
+7. find() - İlk eşleşen elemanı bulur
+8. findIndex() - İlk eşleşen elemanın index'ini bulur
+9. some() - En az bir eleman koşula uyarsa true
+10. every() - Tüm elemanlar koşula uyarsa true
+11. includes() - Eleman var mı kontrol eder
+12. indexOf() - Elemanın index'ini bulur
+13. lastIndexOf() - Son eşleşen elemanın index'ini bulur
+14. reduce() - Diziyi tek değere indirger
+15. reduceRight() - Sağdan sola reduce
+16. flat() - İç içe dizileri düzleştirir
+17. flatMap() - map + flat birlikte
+18. toString() - Diziyi string'e çevirir
+19. toLocaleString() - Yerel formatta string'e çevirir

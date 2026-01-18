@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Görev 1</title>
+    <style>
+        html {
+            font-size: 24px;
+        }
+
+        textarea, button {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <label for="txt">Metin</label><br>
+    <textarea id="txt" cols="40" rows="5">bugün deniz kenarında yürüdüm</textarea><br>
+    <button id="btn">ÜNLÜ HARFLERİ BÜYÜT</button>
+
+    <script>        
+        const txt = document.getElementById("txt");
+        const unluler = "aeıioöuü";
+
+        document.getElementById("btn").onclick = function() {
+            let metin = txt.value;
+            let sonuc = "";
+
+            // metindeki ünlü harfleri büyük harfe çevir
+            // ve sonuc değişkenine aktar 
+            // YÖNTEM 1
+            // sonuc = metin
+            //     .split("")
+            //     .map(h => unluler.includes(h) ? h.toLocaleUpperCase("tr") : h)
+            //     .join("");
+
+            // YÖNTEM 2
+            // sonuc = metin;
+            // unluler.split("").forEach(u => {
+            //     sonuc = sonuc.replaceAll(u, u.toLocaleUpperCase("tr"));
+            // });
+
+            // YÖNTEM 3
+            // sonuc = metin.split("").reduce(
+            //     (res, x) => res + (unluler.includes(x) ? x.toLocaleUpperCase("tr") : x)
+            // , "");
+
+            // YÖNTEM 4
+            sonuc = "";
+            for (const harf of metin)
+                sonuc += unluler.includes(harf) ? harf.toLocaleUpperCase("tr") : harf;
+
+            txt.value = sonuc;
+        };
+    </script>
+</body>
+</html>
