@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSon Veri Çekme</title>
+</head>
+<body>
+    <h1>JSon Türünde Veri Çekme</h1>
+
+    <p>Kullanıcı Adı: <strong id="usr">-</strong></p>
+    <p>Yaş: <strong id="age">-</strong></p>
+    <p>Oynadığı Oyunlar: <strong id="games">-</strong></p>
+
+    <script>
+        fetch("profile.json")
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("usr").textContent = data.username;
+                document.getElementById("age").textContent = data.age;
+                document.getElementById("games").textContent = data.games.join(", ");
+            });
+
+    </script>
+</body>
+</html>

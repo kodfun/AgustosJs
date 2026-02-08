@@ -1,0 +1,91 @@
+<!-- https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anlık Bitcoin Fiyatı</title>
+</head>
+
+<body>
+    <h1>Anlık Bitcoin</h1>
+
+    <h2>1 Bitcoin = $<span id="fiyat">0.00</span></h2>
+
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+        const MAX_PRICE_COUNT = 60;
+
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'BTC/USDT Price',
+                    data: [],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        function addData(label, newData) {
+            chart.data.labels.push(label);
+
+            chart.data.datasets.forEach((dataset) => {
+                dataset.data.push(newData);
+            });
+            chart.update();
+
+            if (chart.data.labels.length > MAX_PRICE_COUNT)
+                removeData();
+        }
+
+        function removeData() {
+            chart.data.labels.shift();
+            chart.data.datasets.forEach((dataset) => {
+                dataset.data.shift();
+            });
+            chart.update();
+        }
+    </script>
+
+
+    <script>
+        const txtFiyat = document.getElementById("fiyat");
+        const apiUrl = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT";
+
+        function guncelle() {
+            fetch(apiUrl)
+                .then(res => res.json())
+                .then(data => {
+                    // veri ile işlem yap..
+                    let price = Number(data.price);
+                    let time = new Date().toLocaleTimeString("tr");
+                    addData(time, price);
+                    txtFiyat.textContent = price.toLocaleString("en-US", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    });
+                });
+        }
+
+        guncelle();
+        setInterval(guncelle, 1000);
+    </script>
+</body>
+
+</html>
