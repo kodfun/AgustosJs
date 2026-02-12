@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hava Durumu Uygulaması</title>
+    <style>
+        #sonuc {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="frmHava">
+        <div>
+            <label for="yer">Şehir</label>
+            <input type="text" id="yer" placeholder="Yer adını giriniz.." required>
+        </div>
+        <button>Hava Durumunu Öğren</button>
+    </form>
+
+    <div id="sonuc">
+        <hr>
+        <img id="gorsel" src="https://openweathermap.org/payload/api/media/file/04n.png" alt="durum"><br>
+        Yer Adı: <span id="ad">-</span><br>
+        Sıcaklık: <span id="sicaklik">-</span><br>
+        Açıklama: <span id="aciklama">-</span><br>
+    </div>
+
+    <script>
+        const apiKey = "a57ff31813aadd18480feae635befdc5";
+        const frmHava = document.getElementById("frmHava");
+        const txtYer = document.getElementById("yer");
+        const divSonuc = document.getElementById("sonuc");
+        const imgGorsel = document.getElementById("gorsel");
+        const spnAd = document.getElementById("ad");
+        const spnSicaklik = document.getElementById("sicaklik");
+        const spnAciklama = document.getElementById("aciklama");
+
+        frmHava.addEventListener("submit", sorgula);
+
+        function sorgula(event) {
+            event.preventDefault();
+            const yer = txtYer.value;
+            
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${yer}&units=metric&lang=tr&appid=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    const name = data.name;
+                    const temp = data.main.temp;
+                    const desc = data.weather[0].description;
+                    const icon = data.weather[0].icon;
+                    spnAd.textContent = name;
+                    spnSicaklik.textContent = temp;
+                    spnAciklama.textContent = desc;
+                    imgGorsel.src = `https://openweathermap.org/payload/api/media/file/${icon}.png`;
+                    divSonuc.style.display = "block";
+                });
+        }
+    </script>
+</body>
+</html>

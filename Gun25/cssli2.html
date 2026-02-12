@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hava Durumu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+        :root{
+            --bg:#050a18;
+            --glass:rgba(255,255,255,.04);
+            --glass-border:rgba(255,255,255,.08);
+            --primary:#7c5cfc;
+            --primary-light:#a78bfa;
+            --warm:#f59e0b;
+            --warm-light:#fbbf24;
+            --cyan:#22d3ee;
+            --text:#f1f5f9;
+            --text-muted:#94a3b8;
+            --danger:#f43f5e;
+            --radius:24px;
+        }
+
+        /* ─── animated bg ─── */
+        body{
+            min-height:100vh;
+            font-family:'Inter',system-ui,sans-serif;
+            color:var(--text);
+            overflow-x:hidden;
+            background:var(--bg);
+            display:flex;align-items:center;justify-content:center;
+            flex-direction:column;gap:28px;
+            padding:40px 16px;
+        }
+
+        body::before{
+            content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+            background:
+                radial-gradient(ellipse 900px 500px at 20% 10%,rgba(124,92,252,.22),transparent),
+                radial-gradient(ellipse 700px 400px at 80% 20%,rgba(34,211,238,.15),transparent),
+                radial-gradient(ellipse 600px 600px at 50% 80%,rgba(245,158,11,.1),transparent);
+        }
+
+        /* floating orbs */
+        body::after{
+            content:'';position:fixed;width:320px;height:320px;border-radius:50%;
+            background:radial-gradient(circle,rgba(124,92,252,.35),transparent 70%);
+            top:-80px;right:-60px;z-index:0;
+            animation:orbFloat 8s ease-in-out infinite alternate;
+            filter:blur(60px);pointer-events:none;
+        }
+        @keyframes orbFloat{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-40px,60px) scale(1.15)}}
+
+        /* ─── wrapper ─── */
+        .wrapper{
+            position:relative;z-index:1;
+            width:min(480px,94vw);
+        }
+
+        /* ─── hero header ─── */
+        .hero{
+            text-align:center;margin-bottom:32px;
+        }
+        .hero-icon{
+            font-size:52px;margin-bottom:8px;
+            display:inline-block;
+            animation:iconBounce 3s ease-in-out infinite;
+            filter:drop-shadow(0 8px 24px rgba(34,211,238,.4));
+        }
+        @keyframes iconBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+        .hero h1{
+            font-family:'Playfair Display',serif;
+            font-size:36px;font-weight:700;
+            background:linear-gradient(135deg,var(--cyan),var(--primary-light),var(--warm-light));
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+            background-clip:text;
+            letter-spacing:-.5px;
+        }
+        .hero p{
+            color:var(--text-muted);font-size:14px;margin-top:4px;letter-spacing:.5px;
+        }
+
+        /* ─── card ─── */
+        .card{
+            background:linear-gradient(160deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,.02) 100%);
+            border:1px solid var(--glass-border);
+            border-radius:var(--radius);
+            padding:32px;
+            backdrop-filter:blur(20px) saturate(1.4);
+            box-shadow:
+                0 4px 6px rgba(0,0,0,.1),
+                0 24px 48px rgba(0,0,0,.35),
+                inset 0 1px 0 rgba(255,255,255,.06);
+            transition:transform .3s ease,box-shadow .3s ease;
+        }
+        .card:hover{
+            transform:translateY(-2px);
+            box-shadow:
+                0 4px 6px rgba(0,0,0,.1),
+                0 32px 64px rgba(0,0,0,.4),
+                inset 0 1px 0 rgba(255,255,255,.08);
+        }
+
+        /* ─── form ─── */
+        .form-group{margin-bottom:20px}
+        .form-group label{
+            display:flex;align-items:center;gap:6px;
+            font-size:12px;font-weight:600;
+            text-transform:uppercase;letter-spacing:1.5px;
+            color:var(--text-muted);margin-bottom:10px;
+        }
+        .form-group label svg{width:14px;height:14px;opacity:.6}
+
+        .input-wrap{
+            position:relative;
+        }
+        .input-wrap svg{
+            position:absolute;left:16px;top:50%;transform:translateY(-50%);
+            width:18px;height:18px;color:var(--text-muted);
+            transition:color .2s;pointer-events:none;
+        }
+        #yer{
+            width:100%;padding:16px 16px 16px 46px;
+            font-family:inherit;font-size:15px;font-weight:400;
+            color:var(--text);
+            background:rgba(0,0,0,.35);
+            border:1.5px solid rgba(255,255,255,.1);
+            border-radius:14px;
+            outline:none;
+            transition:border-color .25s,box-shadow .25s,background .25s;
+        }
+        #yer::placeholder{color:rgba(255,255,255,.25);font-weight:300}
+        #yer:focus{
+            border-color:var(--primary);
+            box-shadow:0 0 0 4px rgba(124,92,252,.25);
+            background:rgba(0,0,0,.5);
+        }
+        #yer:focus ~ svg{color:var(--primary-light)}
+
+        /* ─── button ─── */
+        button{
+            position:relative;overflow:hidden;
+            width:100%;padding:16px 24px;
+            border:none;border-radius:14px;
+            font-family:inherit;font-size:15px;font-weight:700;
+            letter-spacing:.3px;
+            color:#fff;cursor:pointer;
+            background:linear-gradient(135deg,var(--primary) 0%,#6d28d9 50%,var(--primary) 100%);
+            background-size:200% 200%;
+            box-shadow:0 8px 24px rgba(124,92,252,.35);
+            transition:transform .2s,box-shadow .2s,background-position .4s;
+        }
+        button:hover{
+            transform:translateY(-2px);
+            box-shadow:0 12px 32px rgba(124,92,252,.5);
+            background-position:100% 0;
+        }
+        button:active{transform:translateY(0);box-shadow:0 4px 16px rgba(124,92,252,.35)}
+        button::after{
+            content:'';position:absolute;inset:0;
+            background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);
+            transform:translateX(-100%);
+            transition:transform .5s;
+        }
+        button:hover::after{transform:translateX(100%)}
+
+        /* ─── result card ─── */
+        #sonuc{
+            display:none;
+            background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+            border:1px solid var(--glass-border);
+            border-radius:var(--radius);
+            padding:36px 32px;
+            backdrop-filter:blur(20px) saturate(1.4);
+            box-shadow:0 24px 48px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);
+            text-align:center;
+            animation:resultSlide .5s cubic-bezier(.16,1,.3,1) both;
+        }
+        @keyframes resultSlide{
+            from{opacity:0;transform:translateY(24px) scale(.97)}
+            to{opacity:1;transform:translateY(0) scale(1)}
+        }
+
+        #gorsel{
+            width:110px;height:110px;
+            margin-bottom:12px;
+            filter:drop-shadow(0 16px 32px rgba(34,211,238,.35));
+            animation:iconPulse 4s ease-in-out infinite;
+        }
+        @keyframes iconPulse{
+            0%,100%{filter:drop-shadow(0 16px 32px rgba(34,211,238,.35)) scale(1)}
+            50%{filter:drop-shadow(0 20px 40px rgba(34,211,238,.5)) scale(1.04)}
+        }
+
+        .info-grid{
+            display:grid;grid-template-columns:1fr 1fr 1fr;
+            gap:12px;margin-top:20px;
+        }
+        .info-item{
+            background:rgba(0,0,0,.25);
+            border:1px solid rgba(255,255,255,.06);
+            border-radius:16px;padding:16px 10px;
+            transition:transform .2s,border-color .2s;
+        }
+        .info-item:hover{
+            transform:translateY(-2px);
+            border-color:rgba(255,255,255,.12);
+        }
+        .info-item .info-label{
+            display:flex;align-items:center;justify-content:center;gap:4px;
+            font-size:10px;font-weight:600;
+            text-transform:uppercase;letter-spacing:1.5px;
+            color:var(--text-muted);margin-bottom:8px;
+        }
+        .info-item .info-label svg{width:12px;height:12px;opacity:.5}
+
+        .info-item .info-value{
+            font-size:16px;font-weight:700;
+            line-height:1.3;
+        }
+
+        /* value colors */
+        .info-item:nth-child(1) .info-value{color:var(--cyan)}
+        .info-item:nth-child(2) .info-value{color:var(--warm-light)}
+        .info-item:nth-child(3) .info-value{color:var(--primary-light)}
+
+        /* ─── responsive ─── */
+        @media(max-width:480px){
+            .hero h1{font-size:28px}
+            .hero-icon{font-size:40px}
+            .card,#sonuc{padding:24px;border-radius:20px}
+            .info-grid{grid-template-columns:1fr;gap:10px}
+            .info-item{
+                display:flex;align-items:center;justify-content:space-between;
+                padding:14px 18px;
+            }
+            .info-item .info-label{margin-bottom:0}
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-icon">⛅</div>
+            <h1>Hava Durumu</h1>
+            <p>Dünyanın her yerinden anlık hava bilgisi</p>
+        </div>
+
+        <!-- Search Card -->
+        <div class="card">
+            <form id="frmHava">
+                <div class="form-group">
+                    <label for="yer">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        Şehir Ara
+                    </label>
+                    <div class="input-wrap">
+                        <input type="text" id="yer" placeholder="İstanbul, Paris, Tokyo..." required>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                </div>
+                <button>🔍  Hava Durumunu Öğren</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Result Card -->
+    <div class="wrapper">
+        <div id="sonuc">
+            <img id="gorsel" src="https://openweathermap.org/payload/api/media/file/04n.png" alt="durum">
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Konum
+                    </div>
+                    <div class="info-value"><span id="ad">-</span></div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+                        Sıcaklık
+                    </div>
+                    <div class="info-value"><span id="sicaklik">-</span>°C</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                        Durum
+                    </div>
+                    <div class="info-value"><span id="aciklama">-</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const apiKey = "a57ff31813aadd18480feae635befdc5";
+        const frmHava = document.getElementById("frmHava");
+        const txtYer = document.getElementById("yer");
+        const divSonuc = document.getElementById("sonuc");
+        const imgGorsel = document.getElementById("gorsel");
+        const spnAd = document.getElementById("ad");
+        const spnSicaklik = document.getElementById("sicaklik");
+        const spnAciklama = document.getElementById("aciklama");
+
+        frmHava.addEventListener("submit", sorgula);
+
+        function sorgula(event) {
+            event.preventDefault();
+            const yer = txtYer.value;
+            
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${yer}&units=metric&lang=tr&appid=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    const name = data.name;
+                    const temp = data.main.temp;
+                    const desc = data.weather[0].description;
+                    const icon = data.weather[0].icon;
+                    spnAd.textContent = name;
+                    spnSicaklik.textContent = temp;
+                    spnAciklama.textContent = desc;
+                    imgGorsel.src = `https://openweathermap.org/payload/api/media/file/${icon}.png`;
+                    divSonuc.style.display = "block";
+                });
+        }
+    </script>
+</body>
+</html>

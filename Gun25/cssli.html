@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hava Durumu Uygulaması</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Sans+3:wght@300;400;600&display=swap");
+
+        :root {
+            --bg: #0c0f14;
+            --bg-2: #111827;
+            --card: #141b2a;
+            --accent: #f2a94a;
+            --accent-2: #6ee7ff;
+            --text: #e6e7ea;
+            --muted: #a6adbb;
+            --ring: rgba(242, 169, 74, 0.45);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Source Sans 3", "Segoe UI", Tahoma, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(1200px 600px at 10% 0%, rgba(110, 231, 255, 0.18), transparent 60%),
+                radial-gradient(900px 500px at 90% 10%, rgba(242, 169, 74, 0.2), transparent 60%),
+                linear-gradient(180deg, var(--bg), var(--bg-2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 22px;
+            padding: 48px 20px;
+        }
+
+        form {
+            width: min(520px, 92vw);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(6px);
+        }
+
+        form::before {
+            content: "Hava Durumu";
+            display: block;
+            font-family: "Marcellus", "Times New Roman", serif;
+            font-size: 28px;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            color: var(--accent-2);
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(10, 12, 18, 0.8);
+            color: var(--text);
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--ring);
+        }
+
+        button {
+            margin-top: 18px;
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1b1410;
+            background: linear-gradient(120deg, var(--accent), #ffd08a);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(242, 169, 74, 0.35);
+        }
+
+        #sonuc {
+            display: none;
+            width: min(520px, 92vw);
+            background: var(--card);
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+            text-align: center;
+        }
+
+        #gorsel {
+            width: 96px;
+            height: 96px;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 12px 20px rgba(110, 231, 255, 0.35));
+        }
+
+        #sonuc span {
+            color: var(--accent-2);
+            font-weight: 600;
+        }
+
+        @media (max-width: 480px) {
+            form,
+            #sonuc {
+                padding: 20px;
+                border-radius: 16px;
+            }
+
+            form::before {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form id="frmHava">
+        <div>
+            <label for="yer">Şehir</label>
+            <input type="text" id="yer" placeholder="Yer adını giriniz.." required>
+        </div>
+        <button>Hava Durumunu Öğren</button>
+    </form>
+
+    <div id="sonuc">
+        <img id="gorsel" src="https://openweathermap.org/payload/api/media/file/04n.png" alt="durum"><br>
+        Yer Adı: <span id="ad">-</span><br>
+        Sıcaklık: <span id="sicaklik">-</span><br>
+        Açıklama: <span id="aciklama">-</span><br>
+    </div>
+
+    <script>
+        const apiKey = "a57ff31813aadd18480feae635befdc5";
+        const frmHava = document.getElementById("frmHava");
+        const txtYer = document.getElementById("yer");
+        const divSonuc = document.getElementById("sonuc");
+        const imgGorsel = document.getElementById("gorsel");
+        const spnAd = document.getElementById("ad");
+        const spnSicaklik = document.getElementById("sicaklik");
+        const spnAciklama = document.getElementById("aciklama");
+
+        frmHava.addEventListener("submit", sorgula);
+
+        function sorgula(event) {
+            event.preventDefault();
+            const yer = txtYer.value;
+            
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${yer}&units=metric&lang=tr&appid=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    const name = data.name;
+                    const temp = data.main.temp;
+                    const desc = data.weather[0].description;
+                    const icon = data.weather[0].icon;
+                    spnAd.textContent = name;
+                    spnSicaklik.textContent = temp;
+                    spnAciklama.textContent = desc;
+                    imgGorsel.src = `https://openweathermap.org/payload/api/media/file/${icon}.png`;
+                    divSonuc.style.display = "block";
+                });
+        }
+    </script>
+</body>
+</html>
