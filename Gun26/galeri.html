@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picsum Photo Gallery</title>
+    <style>
+        h1 {
+            text-transform: uppercase;
+            margin: 3rem 0 1rem 0;
+            text-align: center;
+        }
+
+        #photos {
+            max-width: 800px;
+            margin: 1rem auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        #photos img {
+            width: 100%;
+        }
+
+        #buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem 0;
+            gap: 2.5rem;
+        }
+
+        #buttons>button {
+            font-size: 2rem;
+            padding: 1rem 2rem;
+            font-weight: bold;
+        }
+
+        #sayfaNo {
+            font-weight: bold;
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Picsum Photo Gallery</h1>
+
+    <div id="photos">
+        <img src="https://picsum.photos/id/0/400/300">
+        <img src="https://picsum.photos/id/0/400/300">
+        <img src="https://picsum.photos/id/0/400/300">
+        <img src="https://picsum.photos/id/0/400/300">
+    </div>
+
+    <div id="buttons">
+        <button onclick="yukle(-1)">&larr;</button>
+        <span id="sayfaNo">-</span>
+        <button onclick="yukle(+1)">&rarr;</button>
+    </div>
+
+    <script>
+        let sayfaNo = 1;
+        const spnSayfaNo = document.getElementById("sayfaNo");
+        const divPhotos = document.getElementById("photos");
+
+        function yukle(artis) {
+            if (sayfaNo + artis < 1) 
+                return;
+
+            sayfaNo += artis;
+
+            // sayfaNo ile api sorgulama
+            fetch(`https://picsum.photos/v2/list?page=${sayfaNo}&limit=4`)
+                .then(res => res.json())
+                .then(data => {
+                    divPhotos.innerHTML = "";
+                    for (const photo of data) {
+                        let url = `https://picsum.photos/id/${photo.id}/400/300`;
+                        let img = `<a href="${photo.url}" title="${photo.author}">
+                                      <img src="${url}" alt="photo">
+                                   </a>`;
+                        divPhotos.innerHTML = divPhotos.innerHTML + img; // +=
+                    }
+                });
+
+            spnSayfaNo.textContent = sayfaNo;
+        }
+
+        yukle(0);
+    </script>
+</body>
+</html>

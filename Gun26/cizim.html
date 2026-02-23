@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas ile Çizim</title>
+    <style>
+        body {
+            background-color: gray;
+        }
+
+        canvas {
+            background-color: white;
+            border: 10px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Canvas ile Çizim</h1>
+    <canvas id="cizim" width="500" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById("cizim");
+        const ctx = canvas.getContext("2d");
+        
+        // çizgi çek
+        ctx.beginPath();
+        ctx.moveTo(400, 75);
+        ctx.lineTo(250, 200);
+        ctx.stroke();
+
+        // kalın ve kırmızı bir çizgi
+        ctx.beginPath();
+        ctx.moveTo(60, 40);
+        ctx.lineTo(170, 250);
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+
+        // dikdörtgen (içi boyalı)
+        ctx.fillStyle = "blue";
+        ctx.fillRect(300, 300, 120, 60);
+
+        // dikdörtgen (içi boş)
+        ctx.strokeStyle = "orange";
+        ctx.strokeRect(275, 100, 100, 70);
+
+        // daire (içi boş)
+        ctx.beginPath();
+        ctx.strokeStyle = "purple";
+        ctx.lineWidth = 2;
+        ctx.arc(250, 200, 190, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // saydam ve içi dolu daire 
+        ctx.beginPath();
+        ctx.fillStyle = "rgba(0, 255, 0, .5)";
+        ctx.arc(375, 100, 90, 0, 2 * Math.PI);
+        ctx.fill();
+    </script>
+</body>
+</html>

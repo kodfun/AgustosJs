@@ -1,0 +1,6 @@
+1. rastgele renkte ve boyutta ve konumlarda daireler
+
+2. rastgele çizgiler, birinin bittiği yerde diğeri başlasın, 
+   birleşim (düğüm) noktaları iğne başı gibi belirgin olsun.
+   Düğüm noktaları farklı renkte olsun. Son çizginin bitiş noktası ile
+   ilk çizginin başlangıç noktası en sonda birleşsin.

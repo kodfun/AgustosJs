@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastgele Çizgiler</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        canvas {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="400"></canvas>
+    
+    <script>
+        const canvas = document.getElementById("canvas");
+        const c = canvas.getContext("2d");
+        const adet = 10;
+
+        function ciz(x1, y1, x2, y2) {
+            c.beginPath();
+            // c.strokeStyle = `rgb(${rast(256)}, ${rast(256)}, ${rast(256)})`
+            c.moveTo(x1, y1);
+            c.lineTo(x2, y2);
+            c.stroke();
+        }
+
+        function rast(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        function rastgeleCiz() {
+            const w = canvas.width, h = canvas.height;
+            ciz(rast(w), rast(h), rast(w), rast(h));
+        }
+
+        function rastgeleCizgiler() {
+            yarimTemizle();
+
+            for (let i = 0; i < adet; i++) {
+                rastgeleCiz();
+            }
+        }
+        
+        function temizle() {
+            c.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function yarimTemizle() {
+            c.fillStyle = "rgba(255, 255, 255, .5)";
+            c.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        rastgeleCizgiler();
+
+        setInterval(rastgeleCizgiler, 300);
+    </script>
+</body>
+</html>

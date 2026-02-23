@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasta Animasyonu</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById("canvas");
+        const c = canvas.getContext("2d");
+
+        let x = 1, r = 100, renk = "red";
+
+        function dilimBoya(aci, yariCap) {
+            c.beginPath();
+            c.moveTo(200, 200);
+            c.fillStyle = renk;
+            c.arc(200, 200, yariCap, 0, Math.PI / 180 * aci);
+            c.fill();
+        }
+
+        function boya() {
+            temizle();
+            dilimBoya(x, r);
+            x++;
+
+            if (x > 360)
+                clearInterval(intervalId); // durdur
+        }
+
+        function temizle() {
+            c.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        let intervalId = setInterval(boya, 10);
+        
+    </script>
+</body>
+
+</html>
