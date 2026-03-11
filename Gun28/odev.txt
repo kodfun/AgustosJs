@@ -1,0 +1,2 @@
+localStorage kullanılarak todo öğelerinin kalıcılığını sağlayın. 
+Uygulama açıldığında veriler kapanmadan önceki son haliyle geri yüklensin.
