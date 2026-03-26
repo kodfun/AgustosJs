@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazı Tura Oyunu</title>
+    <link rel="stylesheet" href="toastr.min.css">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #coin {
+            width: 256px;
+        }
+
+        #butonlar {
+            margin-top: 1rem;
+        }
+
+        button {
+            padding: .5rem 1rem;
+            margin: 0 .25rem;
+        }
+
+        #duyuru {
+            width: 350px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: .5rem;
+            font-weight: bold;
+            font-size: 1.25rem;
+            text-align: center;
+            /* display: none; */
+        }
+
+        .kazanc {
+            background-color: #90e890;
+            color: rgb(19, 80, 19);
+        }
+
+        .kayip {
+            background-color: #f2adad;
+            color: #541010;
+        }
+
+        #yatirim {
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Yazı Tura Oyunu</h1>
+    <div id="duyuru" class="kazanc">
+        Bakiye: $<span id="bakiye">1000</span>
+    </div>
+    <div id="masa">
+        <img id="coin" src="tail.png" alt="coin">
+    </div>
+    <div id="miktar">
+        Yatırım: <input type="number" id="yatirim" value="10">
+    </div>
+    <div id="butonlar">
+        <button onclick="firlat(0)">Yazı</button>
+        <button onclick="firlat(1)">Tura</button>
+    </div>
+
+    <script src="jquery-4.0.0.min.js"></script>
+    <script src="toastr.min.js"></script>
+    <script>
+        const imgCoin = document.getElementById("coin");
+        const inputYatirim = document.getElementById("yatirim");
+        const spanBakiye = document.getElementById("bakiye");
+        const divDuyuru = document.getElementById("duyuru");
+        let imgs = ["tail.png", "head.png"];
+        let bakiye = 1000;
+
+        function firlat(secim) {
+            // 0 gelirse yazı  |  1 gelirse tura
+            let sayi = Math.random() < 0.5 ? 0 : 1;
+            imgCoin.src = imgs[sayi];
+            let yatirim = Number(inputYatirim.value);
+            let sonuc = sayi == 0 ? "YAZI" : "TURA";
+
+
+            if (secim == sayi) {
+                bakiye += yatirim; // bakiye = bakiye + yatirim;
+                divDuyuru.className = "kazanc";
+                toastr.success(`[${sonuc}] Kazandınız. +$${yatirim}`);
+            }
+            else {
+                bakiye -= yatirim; // bakiye = bakiye - yatirim;
+                divDuyuru.className = "kayip";
+                toastr.error(`[${sonuc}] Kaybettiniz. -$${yatirim}`);
+            }
+
+            spanBakiye.textContent = bakiye;
+        }
+    </script>
+</body>
+</html>
