@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Resim Galerisi</h1>
+    <div class="slider">
+        <div class="left">
+            <i onclick="goster(-1)" class="fa-solid fa-angle-left btn"></i>
+        </div>
+        <div class="mid" id="canvas">
+            <img id="picture" src="img/animal.jpg" alt="photo">
+        </div>
+        <div class="right">
+            <i onclick="goster(1)" class="fa-solid fa-angle-right btn"></i>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
