@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hava Durumu</title>
+</head>
+<body>
+    <form action="#" id="frmHava">
+        <label for="sehir">Şehir</label>
+        <input type="text" id="sehir" required>
+        <button>Hava Durumunu Öğren</button>
+    </form>
+
+    <div id="sonuc"></div>
+
+    <script>
+        const frm = document.getElementById("frmHava");
+        const txt = document.getElementById("sehir");
+        const div = document.getElementById("sonuc");
+
+        frm.onsubmit = havaOgren;
+
+        function havaOgren(event) {
+            event.preventDefault();
+
+            const yer = txt.value;
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${yer}&appid=5d1ff50454563e59bc6643d51fff8d60&units=metric&lang=tr`;
+
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    let city = data.name;
+                    let temp = data.main.temp;
+                    let desc = data.weather[0].description;
+                    let icon = data.weather[0].icon;
+
+                    div.innerHTML = `
+                        <img src="https://openweathermap.org/payload/api/media/file/${icon}.png"><br>
+                        <strong>Şehir: </strong> ${city}<br>
+                        <strong>Sıcaklık: </strong> ${temp}°C<br>
+                        <strong>Açıklama: </strong> ${desc}<br>
+                    `;
+                });
+        }
+    </script>
+</body>
+</html>

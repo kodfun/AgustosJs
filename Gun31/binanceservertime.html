@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance Clock</title>
+    <style>
+        h2 {
+            margin-top: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+        }
+
+        body>div {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        body>:nth-child(1) {
+            background-color: cyan;
+        }
+
+        body>:nth-child(2) {
+            background-color: magenta;
+        }
+
+        #localtime,
+        #binancetime {
+            font-size: 2rem;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>Local Time</h2>
+        <span id="localtime">00:00:00</span>
+    </div>
+    <div>
+        <h2>Binance Time</h2>
+        <span id="binancetime">00:00:00</span>
+    </div>
+
+    <script>
+        const url = "https://api.binance.com/api/v3/time";
+        const ltim = document.getElementById("localtime");
+        const btim = document.getElementById("binancetime");
+        const dtoptions = {
+            hour12: false,
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            fractionalSecondDigits: 3
+        };
+
+        function tick() {
+
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    let timestamp = data.serverTime;
+                    let serverTime = new Date(timestamp);
+                    ltim.textContent = new Date().toLocaleTimeString("tr", dtoptions);
+                    btim.textContent = serverTime.toLocaleTimeString("tr", dtoptions);
+                });
+        }
+
+        setInterval(tick, 1000);
+    </script>
+</body>
+
+</html>
