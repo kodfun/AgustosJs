@@ -1,0 +1,5 @@
+KAYNAKLAR
+https://jquery.com/
+https://oscarotero.com/jquery/
+
+süre: 1sa
